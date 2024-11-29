@@ -1,5 +1,12 @@
 const admin = require('firebase-admin');
-const serviceAccount = require('./nusantasty-id-firebase-adminsdk-9b6f7-f8866901ad.json');
+const path = require('path');
+const serviceAccountPath = process.env.FIREBASE_SERVICE_ACCOUNT_KEY;
+
+if (!serviceAccountPath) {
+  throw new Error('FIREBASE_SERVICE_ACCOUNT_PATH environment variable is not set');
+}
+
+const serviceAccount = require(path.resolve(serviceAccountPath));
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
