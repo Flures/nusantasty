@@ -10,7 +10,7 @@ const Profile = () => {
       const user = auth.currentUser;
       if (user) {
         const token = await user.getIdToken();
-        const response = await axios.get(`http://localhost:3000/protected/profile/${user.uid}`, {
+        const response = await axios.get(`http://localhost:3000/profile/${user.uid}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         setProfile(response.data);

@@ -8,8 +8,8 @@ const predictionRoutes = require('./routes/predictions');
 const app = express();
 app.use(cors());
 app.use(express.json());
-app.use('/auth', authRoutes);
-app.use('/profile', profileRoutes);
-app.use('/predictions', predictionRoutes);
+app.use('/', authRoutes);
+app.use('/', profileRoutes);
+app.use('/', predictionRoutes);
 
 module.exports = app;

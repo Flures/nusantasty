@@ -8,10 +8,10 @@ const Signup = () => {
   const handleSignup = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:3000/auth/signup', { email, password });
+      const response = await axios.post('http://localhost:3000/signup', { email, password });
       alert(response.data.message);
     } catch (error) {
-      alert(error.response.data.error);
+      alert(error.response?.data?.error || 'Signup failed');
     }
   };
 
