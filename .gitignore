@@ -16,6 +16,9 @@ frontend/*.log
 frontend/.env
 frontend/*.env
 
+# Model_BE
+model_be/testml/
+
 # OS generated files
 .DS_Store
 Thumbs.db

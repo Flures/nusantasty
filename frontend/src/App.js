@@ -22,7 +22,6 @@ const App = () => {
               <Dashboard />
             </ProtectedRoute>
           }
-          
         />
         <Route
           path="/profile"
@@ -36,7 +35,7 @@ const App = () => {
           path="/editprofile"
           element={
             <ProtectedRoute>
-              <EditProfile/>
+              <EditProfile />
             </ProtectedRoute>
           }
         />
