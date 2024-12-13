@@ -2,6 +2,37 @@ const userModel = require('../models/userModel');
 const { bucket, bucketName } = require('../config/bucket');
 const errorResponse = require('../utils/errorResponse');
 
+/**
+ * @swagger
+ * tags:
+ *   name: Profile
+ *   description: User profile endpoints
+ */
+
+/**
+ * @swagger
+ * /profile/{uid}:
+ *   get:
+ *     summary: Get user profile
+ *     tags: [Profile]
+ *     parameters:
+ *       - in: path
+ *         name: uid
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: User ID
+ *     responses:
+ *       200:
+ *         description: User profile retrieved successfully
+ *       403:
+ *         description: Unauthorized access
+ *       404:
+ *         description: Profile not found
+ *       500:
+ *         description: Failed to fetch profile
+ */
+
 exports.getProfile = async (req, res) => {
   const { uid } = req.params;
 
@@ -22,6 +53,33 @@ exports.getProfile = async (req, res) => {
     errorResponse(res, 500, 'Failed to fetch profile');
   }
 };
+
+/**
+ * @swagger
+ * /save-profile:
+ *   post:
+ *     summary: Save user profile
+ *     tags: [Profile]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         multipart/form-data:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               uid:
+ *                 type: string
+ *               name:
+ *                 type: string
+ *               photo:
+ *                 type: string
+ *                 format: binary
+ *     responses:
+ *       200:
+ *         description: User profile saved successfully
+ *       500:
+ *         description: Failed to save user profile
+ */
 
 exports.saveProfile = async (req, res) => {
   const { uid, name } = req.body;

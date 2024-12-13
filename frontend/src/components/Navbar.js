@@ -8,24 +8,22 @@ import logo from './logo.png';
 const Navbar = ({ showLogout }) => {
   const navigate = useNavigate();
   const [profile, setProfile] = useState(null);
+  const API_URL = process.env.REACT_APP_BACKEND_API_URL;
 
   useEffect(() => {
     const fetchProfile = async () => {
       const user = auth.currentUser;
       if (user) {
         const token = await user.getIdToken();
-        const response = await axios.get(
-          `http://localhost:3000/profile/${user.uid}`,
-          {
-            headers: { Authorization: `Bearer ${token}` },
-          },
-        );
+        const response = await axios.get(`${API_URL}/profile/${user.uid}`, {
+          headers: { Authorization: `Bearer ${token}` },
+        });
         setProfile(response.data);
       }
     };
 
     fetchProfile();
-  }, []);
+  }, [API_URL]);
 
   const handleLogout = async () => {
     try {
