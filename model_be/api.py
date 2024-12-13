@@ -61,7 +61,7 @@ def get_recommendations():
 
         if not user_id or not ingredients:
             return jsonify({
-                'error': 'Missing required parameters: userId and ingredients'
+                'error': 'Missing required parameters: ingredients'
             }), 400
 
         # Step 1: Get content-based recommendations
@@ -104,4 +104,5 @@ def get_recommendations():
         }), 500
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
+    port = 8080
+    app.run(host='0.0.0.0', port=port)

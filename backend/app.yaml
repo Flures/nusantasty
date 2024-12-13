@@ -1,0 +1,9 @@
+runtime: nodejs18
+
+env_variables:
+  MYSQL_HOST: "34.101.52.111"
+  MYSQL_USER: "root"
+  MYSQL_PASSWORD: "mumu1234"
+  MYSQL_DATABASE: "nusantasty"
+  BUCKET_NAME: "nusantastybucket"
+  FIREBASE_SERVICE_ACCOUNT_KEY: "./nusantasty-id-firebase-adminsdk-9b6f7-f8866901ad.json"

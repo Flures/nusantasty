@@ -42,7 +42,7 @@ exports.saveProfile = async (req, res) => {
         blobStream.end(req.file.buffer);
       });
 
-      photoUrl = `https://storage.googleapis.com/${bucketName}/users/${uid}`;
+      photoUrl = `https://storage.googleapis.com/${bucketName}/users/${uid}/${req.file.originalname}`;
     }
 
     await userModel.saveUserProfile(uid, name, photoUrl);
